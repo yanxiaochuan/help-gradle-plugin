@@ -15,16 +15,15 @@ gradle createProFile -info
 
 __build.gradle__ (excerpt)
 ```groovy
-plugins {
-    id 'org.gradle.help.properties'
+buildscript {
+    repositories {
+        maven { url "https://plugins.gradle.org/m2/" }
+    }
+    dependencies {
+        classpath "org.gradle.help:help-gradle-plugin:1.0.0"
+    }
 }
-
-apply plugin: 'java'
-apply plugin: 'maven'
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'org.gradle.help.properties'
 ```
 
 a properties is generated, it will reside at `./build/help/help_pro.properties`
