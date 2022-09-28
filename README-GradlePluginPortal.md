@@ -103,6 +103,6 @@ portal plugins _must_ specify the desired version in the DSL.
 
 ```
 plugins {
-    id 'org.cyclonedx.bom' version '1.2.1'
+    id 'org.gradle.help.properties' version '1.0.0'
 }
 ```
