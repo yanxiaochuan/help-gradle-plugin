@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.12.0'
+    id 'maven-publish'
+}
+
+group 'org.gradle.help'
+version = '1.0.0'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation group: 'cn.hutool', name: 'hutool-core', version: '5.7.22'
+}
+
+
+gradlePlugin {
+    plugins {
+        helpPropertiesPlugin {
+            id = 'org.gradle.help.properties'
+            implementationClass = 'org.gradle.help.HelpPropertiesPlugin'
+        }
+    }
+}
