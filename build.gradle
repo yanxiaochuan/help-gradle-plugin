@@ -1,7 +1,9 @@
 plugins {
     id 'java'
     id 'java-gradle-plugin'
+    // 发布插件到gradle官方插件中心
     id 'com.gradle.plugin-publish' version '0.12.0'
+    // 发布插件到maven仓库
     id 'maven-publish'
 }
 
@@ -27,8 +29,10 @@ dependencies {
 
 gradlePlugin {
     plugins {
-        helpPropertiesPlugin {
+        createProFile {
+            // 插件的id
             id = 'org.gradle.help.properties'
+            // 插件的实现类
             implementationClass = 'org.gradle.help.HelpPropertiesPlugin'
         }
     }

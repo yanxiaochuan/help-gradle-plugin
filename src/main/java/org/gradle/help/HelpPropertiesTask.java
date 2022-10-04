@@ -13,23 +13,11 @@ import java.util.Map;
 
 public class HelpPropertiesTask extends DefaultTask {
 
-    private Project project;
-
-    private File buildDir;
-
-    public void setBuildDir(File buildDir) {
-        this.buildDir = buildDir;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
     @TaskAction
     public void createHelpProperties() {
         File touch = creatProFile();
         List<String> contents = new ArrayList<>();
-        Map<String, ?> properties = project.getProperties();
+        Map<String, ?> properties = getProject().getProperties();
         for (Map.Entry<String, ?> p : properties.entrySet()) {
             contents.add(p.getKey() + "=" + p.getValue());
         }
@@ -42,7 +30,7 @@ public class HelpPropertiesTask extends DefaultTask {
 
     private File creatProFile() {
         // 创建文件
-        return FileUtil.touch(new File(buildDir, "help/help_pro.properties"));
+        return FileUtil.touch(new File(getProject().getBuildDir(), "help/help_pro.properties"));
     }
 
 }
